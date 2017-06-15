@@ -3,6 +3,7 @@
  /// @author  lemon(haohb13@gmail.com)
  /// @date    2017-06-15 15:53:50
  ///
+
 #include <string.h>
 
 #include <iostream>
@@ -20,7 +21,7 @@ public:
 		strcpy(_brand, brand);
 	}
 
-	Computer(Computer & rhs)//加const应对右值引用
+	Computer(const Computer & rhs)//加const应对右值引用
 	: _brand(new char[strlen(rhs._brand)+1])
 	, _price(rhs._price)
 	{
@@ -46,6 +47,18 @@ void Computer::print()
 	cout << _brand << " " << _price << endl; 
 }
 
+Computer func()
+{
+	Computer c("a",100);
+	return c;
+}
+
+inline void func2(Computer c)
+{
+	c.print();
+}
+
+
 int main()
 {
 	Computer comm("Mac",999.9);
@@ -61,6 +74,12 @@ int main()
 	Computer comm4(comm);
 	comm4.print();
 
+	cout << endl;
+
+	func();
+
+	cout << endl;
+	func2(comm);
 	return 0;
 }
 
