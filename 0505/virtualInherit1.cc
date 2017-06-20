@@ -17,7 +17,6 @@
 //     并且该虚函数指针位于派生类对象存储空间的开始位置
 //
 #if 1
-#pragma vtordisp(off)
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -33,18 +32,20 @@ public:
 	}
 private:
 	int _ia;
+	int _ib;
+	int _ic;
 };
 
 class B : virtual public A
 {
 public:
 	B(int  ia, int ib) : A(ia), _ib(ib){}
-
+#if 0
 	virtual void print()
 	{
 		cout << "B::print()" << endl;
 	}
-
+#endif
 private:
 	int _ib;
 };
