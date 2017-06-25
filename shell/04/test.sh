@@ -1,3 +1,5 @@
 #!/bin/bash
 
-who >> users
+cp<< EOF
+./users ./a
+EOF
